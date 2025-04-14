@@ -33,13 +33,13 @@
             </div>
 
             <div id="play-game">
-                <button onclick="">Play game ?</button>
+                <button onclick="playGame()">Play game ?</button>
             </div>
             <div style="display: none;" class="color-div">
                 <h4>Pick a color</h4>
                 <p style="display: none;">Great... Now it's ruined....</p>
-                <input type="color" id="color-picker" onchange="" value="#0084ff" />
-                <button style="display: none;" onclick="">Reset</button>
+                <input type="color" id="color-picker" onchange="changeColor()" value="#0084ff" />
+                <button style="display: none;" onclick="resetColor()">Reset</button>
             </div>
         </section>
 
@@ -173,6 +173,39 @@
     <footer>
         <p>By <a>maquentr</a></p>
     </footer>
-    <script></script>
+    <script>
+        //select the elements to manipulate
+        const body = document.querySelector('body')
+        const colorInput = document.getElementById('color-picker')
+        const colorDiv = document.querySelector('.color-div')
+        const hiddenText = document.querySelector('.color-div p')
+        const resetBtn = document.querySelector('.color-div button')
+        const playBtn = document.getElementById('play-game')
+
+        //create functions
+        function playGame() {
+            colorDiv.style.display = 'block'
+            playBtn.style.display = 'none'
+        }
+
+        function changeColor() {
+            const selectedColor = colorInput.value
+            body.style.background = selectedColor
+            resetBtn.style.display = 'block'
+            hiddenText.style.display = 'block'
+            colorInput.style.display = 'none'
+        }
+
+        function resetColor() {
+            body.style.background = 'white'
+            colorInput.style.display = 'block'
+            playBtn.style.display = 'block'
+            hiddenText.style.display = 'none'
+            resetBtn.style.display = 'none'
+            colorDiv.style.display = 'none'
+        }
+
+        //assign funcs to buttons
+    </script>
 </body>
 </html>
